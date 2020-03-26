@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 
 public class game {
 
-	private JFrame frame;
+	private JFrame frmCards;
 
 	/**
 	 * Launch the application.
@@ -14,7 +14,7 @@ public class game {
 			public void run() {
 				try {
 					game window = new game();
-					window.frame.setVisible(true);
+					window.frmCards.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -33,9 +33,11 @@ public class game {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmCards = new JFrame();
+		frmCards.setTitle("Card Games");
+		frmCards.setResizable(false);
+		frmCards.setBounds(100, 100, 960, 720);
+		frmCards.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 }
