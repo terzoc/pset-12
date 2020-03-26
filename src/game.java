@@ -1,6 +1,16 @@
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import javax.swing.JLabel;
+import java.awt.Font;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextField;
 
 public class game {
 
@@ -38,6 +48,79 @@ public class game {
 		frmCards.setResizable(false);
 		frmCards.setBounds(100, 100, 960, 720);
 		frmCards.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		JPanel panel = new JPanel();
+		frmCards.getContentPane().add(panel, BorderLayout.CENTER);
+		panel.setLayout(new CardLayout(0, 0));
+		CardLayout cardLayout = (CardLayout) panel.getLayout();
+		
+		JPanel pokerPanel = new JPanel();
+		pokerPanel.setBackground(Color.WHITE);
+		panel.add(pokerPanel, "pokerPanel");
+		pokerPanel.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Poker");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 32));
+		lblNewLabel_1.setBounds(316, 118, 173, 79);
+		pokerPanel.add(lblNewLabel_1);
+		
+		JButton btnNewButton_2 = new JButton("Main Menu");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(panel, "mainMenu");
+			}
+		});
+		btnNewButton_2.setBounds(316, 339, 115, 30);
+		pokerPanel.add(btnNewButton_2);
+		
+		JPanel BJPanel = new JPanel();
+		BJPanel.setBackground(Color.WHITE);
+		panel.add(BJPanel, "BJPanel");
+		BJPanel.setLayout(null);
+		
+		JLabel BJNamePlate = new JLabel("Blackjack");
+		BJNamePlate.setFont(new Font("Dialog", Font.PLAIN, 32));
+		BJNamePlate.setBounds(338, 73, 149, 75);
+		BJPanel.add(BJNamePlate);
+		
+		JButton button = new JButton("Main Menu");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(panel, "mainMenu");
+			}
+		});
+		button.setBounds(356, 317, 115, 30);
+		BJPanel.add(button);
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel.add(panel_1, "mainMenu");
+		panel_1.setLayout(null);
+		cardLayout.show(panel, "mainMenu");
+		
+		JLabel lblNewLabel = new JLabel("Welcome to Card Games");
+		lblNewLabel.setFont(new Font("Dialog", Font.PLAIN, 32));
+		lblNewLabel.setBounds(294, 57, 365, 84);
+		panel_1.add(lblNewLabel);
+		
+		JButton btnNewButton = new JButton("Blackjack");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(panel, "BJPanel");
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton.setBounds(389, 245, 166, 47);
+		panel_1.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Poker");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				cardLayout.show(panel, "pokerPanel");
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnNewButton_1.setBounds(389, 313, 166, 47);
+		panel_1.add(btnNewButton_1);
 	}
-
 }
