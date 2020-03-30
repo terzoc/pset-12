@@ -54,15 +54,8 @@ public class game {
 		panel.setLayout(new CardLayout(0, 0));
 		CardLayout cardLayout = (CardLayout) panel.getLayout();
 		
-		JPanel pokerPanel = new JPanel();
-		pokerPanel.setBackground(Color.WHITE);
-		panel.add(pokerPanel, "pokerPanel");
-		pokerPanel.setLayout(null);
-		
-		JLabel lblNewLabel_1 = new JLabel("Poker");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 32));
-		lblNewLabel_1.setBounds(316, 118, 173, 79);
-		pokerPanel.add(lblNewLabel_1);
+		JPanel poker = new poker();
+		panel.add(poker, "pokerPanel");
 		
 		JButton btnNewButton_2 = new JButton("Main Menu");
 		btnNewButton_2.addActionListener(new ActionListener() {
@@ -71,7 +64,7 @@ public class game {
 			}
 		});
 		btnNewButton_2.setBounds(316, 339, 115, 30);
-		pokerPanel.add(btnNewButton_2);
+		poker.add(btnNewButton_2);
 		
 		JPanel BJPanel = new JPanel();
 		BJPanel.setBackground(Color.WHITE);
