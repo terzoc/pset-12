@@ -66,16 +66,9 @@ public class game {
 		btnNewButton_2.setBounds(316, 339, 115, 30);
 		poker.add(btnNewButton_2);
 		
-		JPanel BJPanel = new JPanel();
-		BJPanel.setBackground(Color.WHITE);
+		JPanel BJPanel = new blackJack();
 		panel.add(BJPanel, "BJPanel");
-		BJPanel.setLayout(null);
-		
-		JLabel BJNamePlate = new JLabel("Blackjack");
-		BJNamePlate.setFont(new Font("Dialog", Font.PLAIN, 32));
-		BJNamePlate.setBounds(338, 73, 149, 75);
-		BJPanel.add(BJNamePlate);
-		
+			
 		JButton button = new JButton("Main Menu");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
