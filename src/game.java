@@ -74,7 +74,7 @@ public class game {
 				cardLayout.show(panel, "mainMenu");
 			}
 		});
-		button.setBounds(356, 317, 115, 30);
+		button.setBounds(829, 650, 115, 30);
 		BJPanel.add(button);
 		
 		JPanel panel_1 = new JPanel();
