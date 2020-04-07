@@ -51,7 +51,7 @@ At this point, it is the dealer's turn (in computer is the dealer). The dealer *
 
 #### Betting
 
-Before the cards are dealt, the player chooses a number of chips to wager. The minimum bet is 1 chip, and the maximum bet is 10 chips.
+Before the cards are dealt, the player chooses a number of chips to wager. The minimum bet is 2 chips, and the maximum bet is 20 chips. You must place bets in increments of 2.
 
 The payout depends on the manner in which the player wins (or ties). There are only three possibilities.
 

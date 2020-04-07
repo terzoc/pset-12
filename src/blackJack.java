@@ -4,6 +4,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+@SuppressWarnings("serial")
 public class blackJack extends JPanel {
 
 	/**
