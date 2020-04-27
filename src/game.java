@@ -42,6 +42,17 @@ public class game {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+//		try {
+//			FileWriter fw = new FileWriter("chips.txt");
+//			PrintWriter pw = new PrintWriter(fw);
+//			
+//			pw.println("500");
+//			pw.close();
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
 		frmCards = new JFrame();
 		frmCards.setTitle("Card Games");
 		frmCards.setResizable(false);

@@ -16,11 +16,13 @@ import java.awt.FlowLayout;
 public class blackJack extends JPanel {
 	
 	private int betAmount = 2;
+	private deck deck = new deck();
 
 	/**
 	 * Create the panel.
 	 */
 	public blackJack() {
+		Player player = new Player();
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(Color.WHITE);
 		setLayout(null);
@@ -30,29 +32,16 @@ public class blackJack extends JPanel {
 		BJNamePlate.setBounds(410, 6, 149, 75);
 		add(BJNamePlate);
 		
-		ImageIcon card = new ImageIcon("cards/anotherback.png");
-		card = scaleImage(card, 131 , 200);		
-		
-		ImageIcon card2 = new ImageIcon("cards/jrapproved.png");
-		card2 = scaleImage(card2, 131 , 200);	
-		
-		ImageIcon card3 = new ImageIcon("cards/cheer.png");
-		card3 = scaleImage(card3, 131 , 200);	
-		
-		ImageIcon card4 = new ImageIcon("cards/bestback.png");
-		card4 = scaleImage(card4, 131 , 200);	
-		
 		Panel cardDisplayPanel = new Panel();
 //		panel.setBackground(new Color(7, 99, 36));
 		cardDisplayPanel.setBounds(79, 117, 140, 210);
 		add(cardDisplayPanel);
 		cardDisplayPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel cardDisplay = new JLabel();
-		cardDisplayPanel.add(cardDisplay);
-		cardDisplay.setForeground(Color.WHITE);
-		cardDisplay.setBackground(Color.WHITE);
-		cardDisplay.setIcon(card);
+		JLabel dealerCardDisplay = new JLabel();
+		cardDisplayPanel.add(dealerCardDisplay);
+		dealerCardDisplay.setForeground(Color.WHITE);
+		dealerCardDisplay.setBackground(Color.WHITE);
 		
 		Panel cardDisplayPanel2 = new Panel();
 		cardDisplayPanel2.setBounds(293, 117, 140, 210);
@@ -60,11 +49,10 @@ public class blackJack extends JPanel {
 		cardDisplayPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		
-		JLabel cardDisplay2 = new JLabel();
-		cardDisplay2.setForeground(Color.WHITE);
-		cardDisplay2.setBackground(Color.WHITE);
-		cardDisplayPanel2.add(cardDisplay2);
-		cardDisplay2.setIcon(card2);
+		JLabel dealerCardDisplay2 = new JLabel();
+		dealerCardDisplay2.setForeground(Color.WHITE);
+		dealerCardDisplay2.setBackground(Color.WHITE);
+		cardDisplayPanel2.add(dealerCardDisplay2);
 		
 		JLabel lblNewLabel = new JLabel("Dealer");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -81,22 +69,20 @@ public class blackJack extends JPanel {
 		add(cardDisplayPanel3);
 		cardDisplayPanel3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel cardDisplay3 = new JLabel();
-		cardDisplay3.setForeground(Color.WHITE);
-		cardDisplay3.setBackground(Color.WHITE);
-		cardDisplayPanel3.add(cardDisplay3);
-		cardDisplay3.setIcon(card3);
+		JLabel playerCardDisplay = new JLabel();
+		playerCardDisplay.setForeground(Color.WHITE);
+		playerCardDisplay.setBackground(Color.WHITE);
+		cardDisplayPanel3.add(playerCardDisplay);
 		
 		Panel cardDisplayPanel4 = new Panel();
 		cardDisplayPanel4.setBounds(293, 417, 140, 210);
 		add(cardDisplayPanel4);
 		cardDisplayPanel4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JLabel cardDisplay4 = new JLabel();
-		cardDisplay4.setForeground(Color.WHITE);
-		cardDisplay4.setBackground(Color.WHITE);
-		cardDisplayPanel4.add(cardDisplay4);
-		cardDisplay4.setIcon(card4);
+		JLabel playerCardDisplay2 = new JLabel();
+		playerCardDisplay2.setForeground(Color.WHITE);
+		playerCardDisplay2.setBackground(Color.WHITE);
+		cardDisplayPanel4.add(playerCardDisplay2);
 		
 		JLabel betDisplay = new JLabel("Bet Amount : 2");
 		betDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -128,6 +114,18 @@ public class blackJack extends JPanel {
 		add(decreaseBet);
 		
 		JButton startButton = new JButton("Start");
+		startButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ImageIcon dealerCard1 = new ImageIcon("cards/anotherback.png");
+				dealerCard1 = scaleImage(dealerCard1, 131 , 200);		
+				dealerCardDisplay.setIcon(dealerCard1);
+						
+				ImageIcon dealerCard2 = new ImageIcon("cards/"+ getCard( )+".png");
+				dealerCard2 = scaleImage(dealerCard2, 131 , 200);		
+				dealerCardDisplay2.setIcon(dealerCard2);
+			
+			}
+		});
 		startButton.setBounds(735, 93, 89, 23);
 		add(startButton);
 		
@@ -139,9 +137,20 @@ public class blackJack extends JPanel {
 		stayButton.setBounds(217, 651, 89, 23);
 		add(stayButton);
 		
+		JLabel totalChipDisplay = new JLabel("Total Chips : " + player.getChips());
+		totalChipDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		totalChipDisplay.setBounds(651, 11, 169, 25);
+		add(totalChipDisplay);
+		
 	}
 	
-	public ImageIcon scaleImage(ImageIcon icon, int w, int h){
+	private String getCard() {
+		deck.populateDeck();
+		
+		return deck.getRandomCard();
+	}
+	
+	private ImageIcon scaleImage(ImageIcon icon, int w, int h){
         int nw = icon.getIconWidth();
         int nh = icon.getIconHeight();
 
