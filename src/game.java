@@ -127,6 +127,7 @@ public class game {
 		btnResetChips.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Player.setChips(500);
+				JOptionPane.showMessageDialog(null, "Chips reset to 500.");
 			}
 		});
 		btnResetChips.setFont(new Font("Tahoma", Font.PLAIN, 18));

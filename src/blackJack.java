@@ -241,7 +241,8 @@ public class blackJack extends JPanel {
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				totalChipDisplay.setText("Total Chips : " + Player.setChips(totalPlayerChips - betAmount));
-				totalPlayerChips =- betAmount;
+				totalPlayerChips -= betAmount;
+				System.out.println(totalPlayerChips);
 				isGameStarted = true;
 				startButton.setEnabled(false);
 				decreaseBet.setEnabled(false);
@@ -275,6 +276,9 @@ public class blackJack extends JPanel {
 					int lowerValue = upperValue - 10*playerDeck.containsAce();
 					if(upperValue == 21) {
 						playerValue.setText("Points : Blackjack!");
+						Player.setChips((int) (totalPlayerChips+(betAmount*1.5)));
+						JOptionPane.showMessageDialog(null, "Blackjack! You Win! \n\n You gained " + Integer.toString((int) (betAmount*1.5)) + " chips.");
+						resetGame();
 					}else{
 						playerValue.setText("Points : " + upperValue + " or " + lowerValue);
 					}
