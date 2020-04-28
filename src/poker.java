@@ -17,7 +17,7 @@ public class poker extends JPanel {
 		JLabel lblNewLabel_1 = new JLabel("Poker");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblNewLabel_1.setBounds(316, 118, 173, 79);
-		add(lblNewLabel_1);		
+		add(lblNewLabel_1);	
 	}
 
 }

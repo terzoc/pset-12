@@ -6,6 +6,8 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -42,16 +44,7 @@ public class game {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-//		try {
-//			FileWriter fw = new FileWriter("chips.txt");
-//			PrintWriter pw = new PrintWriter(fw);
-//			
-//			pw.println("500");
-//			pw.close();
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+
 		
 		frmCards = new JFrame();
 		frmCards.setTitle("Card Games");
@@ -67,6 +60,7 @@ public class game {
 		JPanel poker = new poker();
 		panel.add(poker, "pokerPanel");
 		
+//		main menu for poker
 		JButton btnNewButton_2 = new JButton("Main Menu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -76,13 +70,22 @@ public class game {
 		btnNewButton_2.setBounds(316, 339, 115, 30);
 		poker.add(btnNewButton_2);
 		
-		JPanel BJPanel = new blackJack();
+		blackJack BJPanel = new blackJack();
 		panel.add(BJPanel, "BJPanel");
-			
+		
+//		main menu for black jack
 		JButton button = new JButton("Main Menu");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cardLayout.show(panel, "mainMenu");
+				if(BJPanel.getIsGameStarted()) {
+					int dialogResult = JOptionPane.showConfirmDialog (null, "You have started a game and are leaving to the main menu. \n\n This will reset your progress. \n\n Are You sure you want to leave?","Warning",JOptionPane.YES_NO_OPTION);
+			    	  if(dialogResult == JOptionPane.YES_OPTION){
+			    		  cardLayout.show(panel, "mainMenu");
+			    	  }
+
+				}else {
+					cardLayout.show(panel, "mainMenu");
+				}				
 			}
 		});
 		button.setBounds(829, 650, 115, 30);
@@ -102,6 +105,7 @@ public class game {
 		JButton btnNewButton = new JButton("Blackjack");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				BJPanel.resetGame();
 				cardLayout.show(panel, "BJPanel");
 			}
 		});
@@ -118,5 +122,15 @@ public class game {
 		btnNewButton_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		btnNewButton_1.setBounds(389, 313, 166, 47);
 		panel_1.add(btnNewButton_1);
+		
+		JButton btnResetChips = new JButton("Reset Chips");
+		btnResetChips.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Player.setChips(500);
+			}
+		});
+		btnResetChips.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		btnResetChips.setBounds(389, 384, 166, 47);
+		panel_1.add(btnResetChips);
 	}
 }
