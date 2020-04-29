@@ -93,4 +93,9 @@ public class card implements Comparable<card>{
 	public boolean getIsAce() {
 		return isAce;
 	}
+	
+	public String getSuit() {
+		return suit;
+	}
+	
 }

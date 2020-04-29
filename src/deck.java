@@ -100,4 +100,5 @@ public class deck extends ArrayList<card>{
 	public void clearDeck(){
 		this.cards.clear();
 	}
+	
 }
