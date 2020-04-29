@@ -101,4 +101,8 @@ public class deck extends ArrayList<card>{
 		this.cards.clear();
 	}
 	
+	public int getDeckSize() {
+		return this.cards.size();
+	}
+	
 }

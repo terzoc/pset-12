@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
+import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.FlowLayout;
@@ -276,7 +277,7 @@ public class blackJack extends JPanel {
 					int lowerValue = upperValue - 10*playerDeck.containsAce();
 					if(upperValue == 21) {
 						playerValue.setText("Points : Blackjack!");
-						Player.setChips((int) (totalPlayerChips+(betAmount*1.5)));
+						Player.setChips((int) (totalPlayerChips+ betAmount+(betAmount*1.5)));
 						JOptionPane.showMessageDialog(null, "Blackjack! You Win! \n\n You gained " + Integer.toString((int) (betAmount*1.5)) + " chips.");
 						resetGame();
 					}else{
@@ -354,34 +355,94 @@ public class blackJack extends JPanel {
 				boolean gameInProgress = true;
 				
 				while(gameInProgress) {
-				ImageIcon newPlayerCard = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-				newPlayerCard = scaleImage(newPlayerCard, 131 , 200);		
+					ImageIcon newPlayerCard = new ImageIcon("cards/" + dealerDeck.draw(mainDeck) + ".png");
+					newPlayerCard = scaleImage(newPlayerCard, 131 , 200);		
+					
+					switch(dealerActionCounter) {
+						case 1:
+							dealerCardDisplay.setIcon(newPlayerCard);
+							dealerActionCounter++;
+							break;
+						case 2:
+							dealerCardDisplay3.setIcon(newPlayerCard);
+							dealerActionCounter++;
+							break;
+						case 3:
+							dealerCardDisplay4.setIcon(newPlayerCard);
+							dealerActionCounter++;
+							break;
+						case 4:
+							dealerCardDisplay5.setIcon(newPlayerCard);
+							dealerActionCounter++;
+							break;
+						default:
+							dealerCardDisplay6.setIcon(newPlayerCard);
+							dealerActionCounter++;
+							break;
+							
+							
+					}
+					
+					if(dealerDeck.containsAce() > 0) {
+						int upperValue = dealerDeck.calculateValue();
+						int lowerValue = upperValue - 10*dealerDeck.containsAce();
+						if(lowerValue > 21) {
+							 dealerValue.setText("Points : " + lowerValue);
+							 Player.setChips((int) (totalPlayerChips+(betAmount*2)));
+							 JOptionPane.showMessageDialog(null, "Dealer Bust! You Win! \n\n You gained " + Integer.toString((int) (betAmount*2)) + " chips.");
+							 resetGame();
+							 return;
+						}else if(upperValue > 21 && lowerValue < 18) { 
+							dealerValue.setText("Points : " + lowerValue);
+						}else if(upperValue > 21 && lowerValue >= 18){
+							dealerValue.setText("Points : " + lowerValue);
+							gameInProgress = false;
+						}else if(lowerValue > 18){
+							dealerValue.setText("Points : " + upperValue + " or " + lowerValue);
+							gameInProgress = false;
+						}else {
+							dealerValue.setText("Points : " + upperValue + " or " + lowerValue);
+						}
+						
+					}else {
+						if(dealerDeck.calculateValue() > 21) {
+							dealerValue.setText("Points : " + dealerDeck.calculateValue());
+							Player.setChips((int) (totalPlayerChips+(betAmount*2)));
+							JOptionPane.showMessageDialog(null, "Dealer Bust! You Win! \n\n You gained " + Integer.toString((int) (betAmount*2)) + " chips.");
+							resetGame();
+							return;
+						}else if(dealerDeck.calculateValue() >= 17){
+							dealerValue.setText("Points : " + dealerDeck.calculateValue());
+							gameInProgress = false;
+						}else {
+							dealerValue.setText("Points : " + dealerDeck.calculateValue());
+						}
+	
+					}
+					
+				}
 				
-				switch(dealerActionCounter) {
-					case 1:
-						dealerCardDisplay.setIcon(newPlayerCard);
-						dealerActionCounter++;
-						break;
-					case 2:
-						dealerCardDisplay3.setIcon(newPlayerCard);
-						dealerActionCounter++;
-						break;
-					case 3:
-						dealerCardDisplay4.setIcon(newPlayerCard);
-						dealerActionCounter++;
-						break;
-					case 4:
-						dealerCardDisplay5.setIcon(newPlayerCard);
-						dealerActionCounter++;
-						break;
-					default:
-						dealerCardDisplay6.setIcon(newPlayerCard);
-						dealerActionCounter++;
-						break;
-						
-						
+				if(dealerDeck.calculateValue() < playerDeck.calculateValue()) {
+					Player.setChips((int) (totalPlayerChips+(betAmount*2)));
+					JOptionPane.showMessageDialog(null, "You Win! \n\n You gained " + Integer.toString((int) (betAmount*2)) + " chips.");
+					resetGame();
+				}else if(dealerDeck.calculateValue() > playerDeck.calculateValue()) {
+					JFrame f=new JFrame();  
+					JOptionPane.showMessageDialog(f,"You lose \n\nPress Ok to start another.","Game Over",JOptionPane.WARNING_MESSAGE);  
+					resetGame();
+				}else if(dealerDeck.calculateValue() == playerDeck.calculateValue() && playerDeck.calculateValue() == 21){
+					if(dealerDeck.getDeckSize() == 2 && playerDeck.getDeckSize() != 2) {
+						JFrame f=new JFrame();  
+						JOptionPane.showMessageDialog(f,"Dealer Blackjack. You lose \n\nPress Ok to start another.","Game Over",JOptionPane.WARNING_MESSAGE);  
+						resetGame();
+					}
+				}else {
+					Player.setChips((int) (totalPlayerChips+(betAmount)));
+					JOptionPane.showMessageDialog(null, "Tie \n\n Your bet has been returned");
+					resetGame();
 				}
-				}
+				
+				
 			}
 		});
 		stayButton.setEnabled(false);
@@ -436,8 +497,6 @@ public class blackJack extends JPanel {
 		stayButton.setEnabled(false);
 		
 		mainDeck.clearDeck();
-		mainDeck.populateDeck();
-		mainDeck.shuffle();
 		
 		playerDeck.clearDeck();
 		dealerDeck.clearDeck();
