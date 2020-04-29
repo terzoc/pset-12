@@ -4,11 +4,12 @@ public class card implements Comparable<card>{
 	private String cardName;
 	private int bjValue;
 	private boolean isAce =false;
+	private String suit;
 	
 	
-	public card(String cardName) {
+	public card(String cardName, String suit) {
 		this.cardName = cardName;
-		
+		this.suit = suit;
 		switch(cardName.toUpperCase().charAt(0)) {
 			case 'A' : 
 				this.rankValue = 1;

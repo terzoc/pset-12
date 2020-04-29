@@ -348,7 +348,42 @@ public class blackJack extends JPanel {
 		hitButton.setBounds(37, 623, 89, 23);
 		add(hitButton);
 		
-		
+		stayButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int dealerActionCounter = 1;
+				boolean gameInProgress = true;
+				
+				while(gameInProgress) {
+				ImageIcon newPlayerCard = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				newPlayerCard = scaleImage(newPlayerCard, 131 , 200);		
+				
+				switch(dealerActionCounter) {
+					case 1:
+						dealerCardDisplay.setIcon(newPlayerCard);
+						dealerActionCounter++;
+						break;
+					case 2:
+						dealerCardDisplay3.setIcon(newPlayerCard);
+						dealerActionCounter++;
+						break;
+					case 3:
+						dealerCardDisplay4.setIcon(newPlayerCard);
+						dealerActionCounter++;
+						break;
+					case 4:
+						dealerCardDisplay5.setIcon(newPlayerCard);
+						dealerActionCounter++;
+						break;
+					default:
+						dealerCardDisplay6.setIcon(newPlayerCard);
+						dealerActionCounter++;
+						break;
+						
+						
+				}
+				}
+			}
+		});
 		stayButton.setEnabled(false);
 		stayButton.setBounds(198, 623, 89, 23);
 		add(stayButton);

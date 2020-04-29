@@ -34,7 +34,7 @@ public class deck extends ArrayList<card>{
 		
 		for(String suit : suits){
             for(String value : values){
-                this.cards.add(new card(value+suit));
+                this.cards.add(new card(value+suit, suit));
             }
         }
 		System.out.println(this.cards.size());
@@ -61,12 +61,12 @@ public class deck extends ArrayList<card>{
 	}
 	
 	public String drawAce() {
-		this.cards.add(new card("AC"));
+		this.cards.add(new card("AC", "C"));
 		
 		return "AC";
 	}
 	public String draw10() {
-		this.cards.add(new card("10H"));
+		this.cards.add(new card("10H", "H"));
 		
 		return "10H";
 	}
