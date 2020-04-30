@@ -543,8 +543,7 @@ public class poker extends JPanel {
 		
 		startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+			public void actionPerformed(ActionEvent e) {				
 				totalChipDisplay.setText("Total Chips : " + Player.setChips(totalPlayerChips - betAmount));
 				totalPlayerChips -= betAmount;
 				System.out.println(totalPlayerChips);
