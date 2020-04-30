@@ -67,7 +67,7 @@ public class game {
 				cardLayout.show(panel, "mainMenu");
 			}
 		});
-		btnNewButton_2.setBounds(316, 339, 115, 30);
+		btnNewButton_2.setBounds(829, 650, 115, 30);
 		poker.add(btnNewButton_2);
 		
 		blackJack BJPanel = new blackJack();

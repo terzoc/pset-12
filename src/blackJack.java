@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import java.awt.event.ActionListener;
-import java.util.concurrent.TimeUnit;
 import java.awt.event.ActionEvent;
 import java.awt.Panel;
 import java.awt.FlowLayout;
@@ -54,6 +53,7 @@ public class blackJack extends JPanel {
 	 */
 	public blackJack() {
 		totalPlayerChips = Player.getChips();
+		
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setBackground(Color.WHITE);
 		setLayout(null);
