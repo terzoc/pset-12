@@ -136,33 +136,42 @@ public class deck extends ArrayList<card>{
            
            
            
-           if (pairs == 1) {
+         if (pairs == 1) {
         	 betMultiplier = 0;
+        	 System.out.println("pair");
          }
          if (pairs == 2) {
         	 betMultiplier = 1;
+        	 System.out.println("2pair");
          }
          if (threeOfKind) {
         	 betMultiplier = 2;
+        	 System.out.println("3kind");
          }
          if (straight) {
         	 betMultiplier = 3;
+        	 System.out.println("straight");
          }
          if (flush) {
         	 betMultiplier = 5;
+        	 System.out.println("flush");
          }
          
          if (pairs == 1 && threeOfKind) {
         	 betMultiplier = 10;
+        	 System.out.println("full");
          }
          if (fourOfAKind) {
         	 betMultiplier = 25;
+        	 System.out.println("4kind");
          }
          if (straight && flush) {
         	 betMultiplier = 100;
+        	 System.out.println("straightFlush");
          }
          if (royalFlush) {
         	 betMultiplier = 250;
+        	 System.out.println("royalFlush");
          }
 		return betMultiplier; 
 	}
