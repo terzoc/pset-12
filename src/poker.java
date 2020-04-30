@@ -50,28 +50,28 @@ public class poker extends JPanel {
 	private boolean swapped = false;
 	private int winMultiplier = -1;
 	private int winnings = 0;
-	
+
 
 	/**
 	 * Create the panel.
 	 */
 	public poker() {
 		totalPlayerChips = Player.getChips();
-		
+
 		setBackground(Color.WHITE);
 		setBorder(new LineBorder(new Color(0, 0, 0)));
 		setLayout(null);
-		
+
 		JLabel lblNewLabel_1 = new JLabel("Poker");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblNewLabel_1.setBounds(437, 11, 109, 46);
-		add(lblNewLabel_1);	
-				
+		add(lblNewLabel_1);
+
 		betDisplay = new JLabel("Bet Amount : 1");
 		betDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		betDisplay.setBounds(705, 56, 140, 25);
 		add(betDisplay);
-		
+
 		increaseBet = new JButton("+");
 		increaseBet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -83,7 +83,7 @@ public class poker extends JPanel {
 		});
 		increaseBet.setBounds(651, 56, 46, 23);
 		add(increaseBet);
-		
+
 		decreaseBet = new JButton("-");
 		decreaseBet.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -95,75 +95,75 @@ public class poker extends JPanel {
 		});
 		decreaseBet.setBounds(855, 56, 46, 23);
 		add(decreaseBet);
-		
-		backOfCard = new ImageIcon("cards/anotherback.png");
-		backOfCard = scaleImage(backOfCard, 131 , 200);	
 
-		
+		backOfCard = new ImageIcon("cards/anotherback.png");
+		backOfCard = scaleImage(backOfCard, 131 , 200);
+//bruh
+
 		totalChipDisplay = new JLabel("Total Chips : " + totalPlayerChips);
 		totalChipDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		totalChipDisplay.setBounds(651, 11, 169, 25);
 		add(totalChipDisplay);
-		
+
 		Panel cardDisplayPanel = new Panel();
 		cardDisplayPanel.setBounds(51, 138, 140, 210);
 		add(cardDisplayPanel);
 		cardDisplayPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		playerCardDisplay = new JLabel();
 		playerCardDisplay.setForeground(Color.WHITE);
 		playerCardDisplay.setBackground(Color.WHITE);
 		cardDisplayPanel.add(playerCardDisplay);
-		
-		
-		
+
+
+
 		Panel cardDisplayPanel2 = new Panel();
 		cardDisplayPanel2.setBounds(229, 138, 140, 210);
 		add(cardDisplayPanel2);
 		cardDisplayPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		playerCardDisplay2 = new JLabel();
 		playerCardDisplay2.setForeground(Color.WHITE);
 		playerCardDisplay2.setBackground(Color.WHITE);
 		cardDisplayPanel2.add(playerCardDisplay2);
-		
+
 
 		Panel cardDisplayPanel3 = new Panel();
 		cardDisplayPanel3.setBounds(406, 138, 140, 210);
 		add(cardDisplayPanel3);
 		cardDisplayPanel3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		playerCardDisplay3 = new JLabel();
 		playerCardDisplay3.setForeground(Color.WHITE);
 		playerCardDisplay3.setBackground(Color.WHITE);
 		cardDisplayPanel3.add(playerCardDisplay3);
-		
+
 		Panel cardDisplayPanel4 = new Panel();
 		cardDisplayPanel4.setBounds(599, 138, 140, 210);
 		add(cardDisplayPanel4);
 		cardDisplayPanel4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		playerCardDisplay4 = new JLabel();
 		playerCardDisplay4.setForeground(Color.WHITE);
 		playerCardDisplay4.setBackground(Color.WHITE);
 		cardDisplayPanel4.add(playerCardDisplay4);
-		
+
 		Panel cardDisplayPanel5 = new Panel();
 		cardDisplayPanel5.setBounds(778, 138, 140, 210);
 		add(cardDisplayPanel5);
 		cardDisplayPanel5.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		playerCardDisplay5 = new JLabel();
 		playerCardDisplay5.setForeground(Color.WHITE);
 		playerCardDisplay5.setBackground(Color.WHITE);
 		cardDisplayPanel5.add(playerCardDisplay5);
-		
+
 		playerCardDisplay.setIcon(backOfCard);
 		playerCardDisplay2.setIcon(backOfCard);
 		playerCardDisplay3.setIcon(backOfCard);
 		playerCardDisplay4.setIcon(backOfCard);
 		playerCardDisplay5.setIcon(backOfCard);
-		
+
 		swapBox1 = new JCheckBox("Swap");
 		swapBox1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -174,7 +174,7 @@ public class poker extends JPanel {
 					swapsSelected--;
 					swap1 = false;
 				}
-				
+
 				if(swapsSelected == 3) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
@@ -203,7 +203,7 @@ public class poker extends JPanel {
 		swapBox1.setBackground(Color.WHITE);
 		swapBox1.setBounds(92, 354, 62, 23);
 		add(swapBox1);
-		
+
 		swapBox2 = new JCheckBox("Swap");
 		swapBox2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -214,7 +214,7 @@ public class poker extends JPanel {
 					swapsSelected--;
 					swap2 = false;
 				}
-				
+
 				if(swapsSelected == 3) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
@@ -243,7 +243,7 @@ public class poker extends JPanel {
 		swapBox2.setBackground(Color.WHITE);
 		swapBox2.setBounds(267, 354, 62, 23);
 		add(swapBox2);
-		
+
 		swapBox3 = new JCheckBox("Swap");
 		swapBox3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -254,7 +254,7 @@ public class poker extends JPanel {
 					swapsSelected--;
 					swap3 = false;
 				}
-				
+
 				if(swapsSelected == 3) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
@@ -283,7 +283,7 @@ public class poker extends JPanel {
 		swapBox3.setBackground(Color.WHITE);
 		swapBox3.setBounds(452, 354, 67, 23);
 		add(swapBox3);
-		
+
 		swapBox4 = new JCheckBox("Swap");
 		swapBox4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -294,7 +294,7 @@ public class poker extends JPanel {
 					swapsSelected--;
 					swap4 = false;
 				}
-				
+
 				if(swapsSelected == 3) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
@@ -323,7 +323,7 @@ public class poker extends JPanel {
 		swapBox4.setBackground(Color.WHITE);
 		swapBox4.setBounds(646, 354, 62, 23);
 		add(swapBox4);
-		
+
 		swapBox5 = new JCheckBox("Swap");
 		swapBox5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -334,7 +334,7 @@ public class poker extends JPanel {
 					swapsSelected--;
 					swap5 = false;
 				}
-				
+
 				if(swapsSelected == 3) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
@@ -363,7 +363,7 @@ public class poker extends JPanel {
 		swapBox5.setBackground(Color.WHITE);
 		swapBox5.setBounds(823, 354, 62, 23);
 		add(swapBox5);
-		
+
 		swapButton = new JButton("Swap");
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -390,41 +390,41 @@ public class poker extends JPanel {
 				}
 				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.getCardName(0, playerDeck) + ".png");
 //				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
-				playerCard1 = scaleImage(playerCard1, 131 , 200);		
+				playerCard1 = scaleImage(playerCard1, 131 , 200);
 				playerCardDisplay.setIcon(playerCard1);
-				
+
 				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.getCardName(1, playerDeck) + ".png");
 //				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
-				playerCard2 = scaleImage(playerCard2, 131 , 200);		
+				playerCard2 = scaleImage(playerCard2, 131 , 200);
 				playerCardDisplay2.setIcon(playerCard2);
-				
+
 				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.getCardName(2, playerDeck) + ".png");
 //				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
-				playerCard3 = scaleImage(playerCard3, 131 , 200);		
+				playerCard3 = scaleImage(playerCard3, 131 , 200);
 				playerCardDisplay3.setIcon(playerCard3);
-				
+
 				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.getCardName(3, playerDeck) + ".png");
 //				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
-				playerCard4 = scaleImage(playerCard4, 131 , 200);		
+				playerCard4 = scaleImage(playerCard4, 131 , 200);
 				playerCardDisplay4.setIcon(playerCard4);
-				
+
 				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.getCardName(4, playerDeck) + ".png");
 //			    ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
-				playerCard5 = scaleImage(playerCard5, 131 , 200);		
+				playerCard5 = scaleImage(playerCard5, 131 , 200);
 				playerCardDisplay5.setIcon(playerCard5);
-				
+
                swapButton.setEnabled(false);
                winMultiplier = playerDeck.checkWinConditions(playerDeck);
                winnings = winMultiplier * betAmount;
 			switch(winMultiplier) {
-			case -1 :					
+			case -1 :
 				JOptionPane.showMessageDialog(null, "You Lose! Better luck next time!");
 				resetGame();
 				break;
 			case 0 :
 				Player.setChips((int) (totalPlayerChips + betAmount + winnings));
 				JOptionPane.showMessageDialog(null, "One Pair! You recieved your bet back.");
-				
+
 				resetGame();
 				break;
 			case 1 :
@@ -467,15 +467,15 @@ public class poker extends JPanel {
 				JOptionPane.showMessageDialog(null, "Royal Flush! Wow! \n\n You gained " + Integer.toString((int) (winnings + betAmount)) + " chips.");
 				resetGame();
 				break;
-				
+
 			}
-               
-               
+
+
 			}
 		});
 		swapButton.setBounds(333, 395, 89, 23);
 		add(swapButton);
-		
+
 		holdButton = new JButton("Hold");
 		holdButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -484,13 +484,13 @@ public class poker extends JPanel {
 				winnings = winMultiplier * betAmount;
 				}
 				switch(winMultiplier) {
-				case -1 :					
+				case -1 :
 					JOptionPane.showMessageDialog(null, "You Lose! Better luck next time!");
 					resetGame();
 					break;
 				case 0 :
 					Player.setChips((int) (totalPlayerChips + betAmount + winnings));
-					JOptionPane.showMessageDialog(null, "One Pair! You recieved your bet back.");		
+					JOptionPane.showMessageDialog(null, "One Pair! You recieved your bet back.");
 					resetGame();
 					break;
 				case 1 :
@@ -533,17 +533,17 @@ public class poker extends JPanel {
 					JOptionPane.showMessageDialog(null, "Royal Flush! Wow! \n\n You gained " + Integer.toString((int) (winnings + betAmount)) + " chips.");
 					resetGame();
 					break;
-					
+
 				}
 			}
 		});
 		holdButton.setBounds(532, 395, 89, 23);
 		add(holdButton);
-		
-		
+
+
 		startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {				
+			public void actionPerformed(ActionEvent e) {
 				totalChipDisplay.setText("Total Chips : " + Player.setChips(totalPlayerChips - betAmount));
 				totalPlayerChips -= betAmount;
 				System.out.println(totalPlayerChips);
@@ -553,42 +553,42 @@ public class poker extends JPanel {
 				increaseBet.setEnabled(false);
 				swapButton.setEnabled(true);
 				holdButton.setEnabled(true);
-				
+
 				mainDeck.populateDeck();
 				mainDeck.shuffle();
-				
-				
+
+
 				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
 //				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw9() + ".png");
-				playerCard1 = scaleImage(playerCard1, 131 , 200);		
+				playerCard1 = scaleImage(playerCard1, 131 , 200);
 				playerCardDisplay.setIcon(playerCard1);
-								
+
 				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
 //				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw9() + ".png");
-				playerCard2 = scaleImage(playerCard2, 131 , 200);		
+				playerCard2 = scaleImage(playerCard2, 131 , 200);
 				playerCardDisplay2.setIcon(playerCard2);
-				
+
 				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
 //				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
-				playerCard3 = scaleImage(playerCard3, 131 , 200);		
+				playerCard3 = scaleImage(playerCard3, 131 , 200);
 				playerCardDisplay3.setIcon(playerCard3);
-				
+
 				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
 //				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
-				playerCard4 = scaleImage(playerCard4, 131 , 200);		
+				playerCard4 = scaleImage(playerCard4, 131 , 200);
 				playerCardDisplay4.setIcon(playerCard4);
-				
+
 				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
 //				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.drawK() + ".png");
-				playerCard5 = scaleImage(playerCard5, 131 , 200);		
+				playerCard5 = scaleImage(playerCard5, 131 , 200);
 				playerCardDisplay5.setIcon(playerCard5);
 			}
 		});
 		startButton.setBounds(731, 92, 89, 23);
 		add(startButton);
-		
+
 	}
-	
+
 	public void resetGame() {
 		isGameStarted = false;
 		startButton.setEnabled(true);
@@ -599,15 +599,15 @@ public class poker extends JPanel {
 		playerDeck.clearDeck();
 		swapButton.setEnabled(true);
 		holdButton.setEnabled(true);
-		
+
 		backOfCard = new ImageIcon("cards/anotherback.png");
-		backOfCard = scaleImage(backOfCard, 131 , 200);	
+		backOfCard = scaleImage(backOfCard, 131 , 200);
 		playerCardDisplay.setIcon(backOfCard);
 		playerCardDisplay2.setIcon(backOfCard);
 		playerCardDisplay3.setIcon(backOfCard);
 		playerCardDisplay4.setIcon(backOfCard);
 		playerCardDisplay5.setIcon(backOfCard);
-		
+
 		swapBox1.setEnabled(true);
 		swapBox2.setEnabled(true);
 		swapBox3.setEnabled(true);
@@ -618,24 +618,24 @@ public class poker extends JPanel {
 		swapBox3.setSelected(false);
 		swapBox4.setSelected(false);
 		swapBox5.setSelected(false);
-		
+
 		swapsSelected = 0;
-		
+
 		winMultiplier = -1;
 		winnings = 0;
 		betAmount = 1;
 		betDisplay.setText("Bet Amount : " + betAmount);
-		
+
 		swap1 = false;
 		swap2 = false;
 		swap3 = false;
 		swap4 = false;
 		swap5 = false;
 		swapped = false;
-		
+
 		refreshChips();
 	}
-	
+
 	public void refreshChips() {
 		System.out.println("refreshed");
 		totalChipDisplay.setText("Total Chips : " + Player.getChips());
@@ -660,9 +660,9 @@ public class poker extends JPanel {
 
         return new ImageIcon(icon.getImage().getScaledInstance(nw, nh, Image.SCALE_DEFAULT));
     }
-	
+
 	public boolean getIsGameStarted() {
 		return isGameStarted;
 	}
-	
+
 }
