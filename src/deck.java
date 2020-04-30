@@ -122,7 +122,7 @@ public class deck extends ArrayList<card>{
 	}
 	
 	public int checkWinConditions(deck playerDeck) {
-		int betMultiplier = 0;
+		int betMultiplier = -1;
 		boolean flush = false;
 		int card1Rank = playerDeck.getCard(0).getRank();
 		String card1Suit = playerDeck.getCard(0).getSuit();

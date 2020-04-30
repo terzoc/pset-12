@@ -490,8 +490,7 @@ public class poker extends JPanel {
 					break;
 				case 0 :
 					Player.setChips((int) (totalPlayerChips + betAmount + winnings));
-					JOptionPane.showMessageDialog(null, "One Pair! You recieved your bet back.");
-					
+					JOptionPane.showMessageDialog(null, "One Pair! You recieved your bet back.");		
 					resetGame();
 					break;
 				case 1 :
