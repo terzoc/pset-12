@@ -16,6 +16,8 @@ import javax.swing.ButtonGroup;
 
 @SuppressWarnings("serial")
 public class poker extends JPanel {
+	private deck mainDeck = new deck();
+	private deck playerDeck = new deck();
 	private int betAmount = 2;
 	private JLabel totalChipDisplay;
 	private JButton increaseBet;
@@ -29,6 +31,13 @@ public class poker extends JPanel {
 	private JCheckBox swapBox3;
 	private JCheckBox swapBox4;
 	private JCheckBox swapBox5;
+	private boolean isGameStarted = false;
+	private boolean swap1 = false;
+	private boolean swap2 = false;
+	private boolean swap3 = false;
+	private boolean swap4 = false;
+	private boolean swap5 = false;
+	
 
 	/**
 	 * Create the panel.
@@ -331,6 +340,7 @@ public class poker extends JPanel {
 		JButton swapButton = new JButton("Swap");
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		swapButton.setBounds(437, 398, 89, 23);
@@ -339,6 +349,43 @@ public class poker extends JPanel {
 		JButton startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				totalChipDisplay.setText("Total Chips : " + Player.setChips(totalPlayerChips - betAmount));
+				totalPlayerChips -= betAmount;
+				System.out.println(totalPlayerChips);
+				isGameStarted = true;
+				startButton.setEnabled(false);
+				decreaseBet.setEnabled(false);
+				increaseBet.setEnabled(false);
+				
+				mainDeck.populateDeck();
+				mainDeck.shuffle();
+				
+				
+				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard1 = scaleImage(playerCard1, 131 , 200);		
+				playerCardDisplay.setIcon(playerCard1);
+				
+				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard2 = scaleImage(playerCard2, 131 , 200);		
+				playerCardDisplay2.setIcon(playerCard2);
+				
+				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard3 = scaleImage(playerCard3, 131 , 200);		
+				playerCardDisplay3.setIcon(playerCard3);
+				
+				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard4 = scaleImage(playerCard4, 131 , 200);		
+				playerCardDisplay4.setIcon(playerCard4);
+				
+				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard5 = scaleImage(playerCard5, 131 , 200);		
+				playerCardDisplay5.setIcon(playerCard5);
 			}
 		});
 		startButton.setBounds(731, 92, 89, 23);
