@@ -74,6 +74,9 @@ public class poker extends JPanel {
 		decreaseBet.setBounds(855, 56, 46, 23);
 		add(decreaseBet);
 		
+		ImageIcon backOfCard = new ImageIcon("cards/anotherback.png");
+		backOfCard = scaleImage(backOfCard, 131 , 200);		
+		
 		totalChipDisplay = new JLabel("Total Chips : " + totalPlayerChips);
 		totalChipDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		totalChipDisplay.setBounds(651, 11, 169, 25);
@@ -128,6 +131,12 @@ public class poker extends JPanel {
 		playerCardDisplay5.setForeground(Color.WHITE);
 		playerCardDisplay5.setBackground(Color.WHITE);
 		cardDisplayPanel5.add(playerCardDisplay5);
+		
+		playerCardDisplay.setIcon(backOfCard);
+		playerCardDisplay2.setIcon(backOfCard);
+		playerCardDisplay3.setIcon(backOfCard);
+		playerCardDisplay4.setIcon(backOfCard);
+		playerCardDisplay5.setIcon(backOfCard);
 		
 		swapBox1 = new JCheckBox("Swap");
 		swapBox1.addActionListener(new ActionListener() {
