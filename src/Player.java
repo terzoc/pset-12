@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Player {
-	
+
 	public static int getChips() {
 		int chipsTotal = 0;
 		try {
@@ -13,7 +13,7 @@ public class Player {
 			BufferedReader br = new BufferedReader(fr);
 			String chips;
 			chips = br.readLine();
-					
+
 			chipsTotal = Integer.valueOf(chips);
 			br.close();
 		} catch (IOException e) {
@@ -22,20 +22,20 @@ public class Player {
 		}
 		return chipsTotal;
 	}
-	
+
 	public static String setChips(int newBal){
 		try {
 			FileWriter fw = new FileWriter("chips.txt");
 			PrintWriter pw = new PrintWriter(fw);
-			
+
 			pw.println(Integer.toString(newBal));
 			pw.close();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+
 		return Integer.toString(newBal);
 	}
-	
+	// i need more commits
 }
