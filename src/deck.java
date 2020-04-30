@@ -98,6 +98,7 @@ public class deck extends ArrayList<card>{
 	
 	public int checkWinConditions(deck playerDeck) {
 		int betMultiplier = 0;
+		boolean flush = false;
 		int card1Rank = playerDeck.getCard(0).getRank();
 		String card1Suit = playerDeck.getCard(0).getSuit();
 		int card2Rank = playerDeck.getCard(1).getRank();
@@ -111,14 +112,58 @@ public class deck extends ArrayList<card>{
 		System.out.println(card4Suit);
 		String[] cardSuits = { card1Suit, card2Suit, card3Suit, card4Suit, card5Suit };
 		int[] cardRanks = { card1Rank, card2Rank, card3Rank, card4Rank, card5Rank };
+		int suits = 0;
 		int pairs = 0;
+		boolean threeOfKind = false;
+		boolean fourOfAKind = false;
+		boolean straight = false;
+		boolean royalFlush = false;
+		
+        for (int i = 0; i < cardSuits.length; i++) 
+		        for (int j = i+1; j < cardRanks.length; j++) 
+		  
+		            if (cardSuits[i] == cardSuits[j]) 
+		                suits++;
+        if (suits == 5) {
+        	flush = true;
+        }
            for (int i = 0; i < cardRanks.length; i++) 
 		        for (int j = i+1; j < cardRanks.length; j++) 
 		  
 		            if (cardRanks[i] == cardRanks[j]) 
 		                pairs++;
+      
+           
+           
+           
+           if (pairs == 1) {
+        	 betMultiplier = 0;
+         }
+         if (pairs == 2) {
+        	 betMultiplier = 1;
+         }
+         if (threeOfKind) {
+        	 betMultiplier = 2;
+         }
+         if (straight) {
+        	 betMultiplier = 3;
+         }
+         if (flush) {
+        	 betMultiplier = 5;
+         }
          
-
+         if (pairs == 1 && threeOfKind) {
+        	 betMultiplier = 10;
+         }
+         if (fourOfAKind) {
+        	 betMultiplier = 25;
+         }
+         if (straight && flush) {
+        	 betMultiplier = 100;
+         }
+         if (royalFlush) {
+        	 betMultiplier = 250;
+         }
 		return betMultiplier; 
 	}
 	
