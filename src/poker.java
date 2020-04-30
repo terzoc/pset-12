@@ -98,7 +98,6 @@ public class poker extends JPanel {
 
 		backOfCard = new ImageIcon("cards/anotherback.png");
 		backOfCard = scaleImage(backOfCard, 131 , 200);
-//  bruh 
 
 		totalChipDisplay = new JLabel("Total Chips : " + totalPlayerChips);
 		totalChipDisplay.setFont(new Font("Tahoma", Font.PLAIN, 18));
