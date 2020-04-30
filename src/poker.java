@@ -379,22 +379,22 @@ public class poker extends JPanel {
 				playerCardDisplay.setIcon(playerCard1);
 				
 				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.getCardName(1, playerDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
 				playerCard2 = scaleImage(playerCard2, 131 , 200);		
 				playerCardDisplay2.setIcon(playerCard2);
 				
 				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.getCardName(2, playerDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
 				playerCard3 = scaleImage(playerCard3, 131 , 200);		
 				playerCardDisplay3.setIcon(playerCard3);
 				
 				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.getCardName(3, playerDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
 				playerCard4 = scaleImage(playerCard4, 131 , 200);		
 				playerCardDisplay4.setIcon(playerCard4);
 				
 				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.getCardName(4, playerDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//			    ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
 				playerCard5 = scaleImage(playerCard5, 131 , 200);		
 				playerCardDisplay5.setIcon(playerCard5);
 				
@@ -431,28 +431,28 @@ public class poker extends JPanel {
 				mainDeck.shuffle();
 				
 				
-				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.draw9() + ".png");
 				playerCard1 = scaleImage(playerCard1, 131 , 200);		
 				playerCardDisplay.setIcon(playerCard1);
-				
-				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+								
+//				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.draw9() + ".png");
 				playerCard2 = scaleImage(playerCard2, 131 , 200);		
 				playerCardDisplay2.setIcon(playerCard2);
 				
-				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
 				playerCard3 = scaleImage(playerCard3, 131 , 200);		
 				playerCardDisplay3.setIcon(playerCard3);
 				
-				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
 				playerCard4 = scaleImage(playerCard4, 131 , 200);		
 				playerCardDisplay4.setIcon(playerCard4);
 				
-				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+//				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
+				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.drawK() + ".png");
 				playerCard5 = scaleImage(playerCard5, 131 , 200);		
 				playerCardDisplay5.setIcon(playerCard5);
 			}

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -73,9 +74,33 @@ public class deck extends ArrayList<card>{
 		return "AC";
 	}
 	public String draw10() {
-		this.cards.add(new card("10H", "H"));
+		this.cards.add(new card("10C", "C"));
 		
-		return "10H";
+		return "10C";
+	}
+	
+	public String draw9() {
+		this.cards.add(new card("9C", "C"));
+		
+		return "9C";
+	}
+	
+	public String drawJ() {
+		this.cards.add(new card("JC", "C"));
+		
+		return "JC";
+	}
+	
+	public String drawQ() {
+		this.cards.add(new card("QC", "C"));
+		
+		return "QC";
+	}
+	
+	public String drawK() {
+		this.cards.add(new card("KC", "C"));
+		
+		return "KC";
 	}
 	
 	public card getCard(int i){
@@ -109,7 +134,6 @@ public class deck extends ArrayList<card>{
 		String card4Suit = playerDeck.getCard(3).getSuit();
 		int card5Rank = playerDeck.getCard(4).getRank();
 		String card5Suit = playerDeck.getCard(4).getSuit();
-		System.out.println(card4Suit);
 		String[] cardSuits = { card1Suit, card2Suit, card3Suit, card4Suit, card5Suit };
 		int[] cardRanks = { card1Rank, card2Rank, card3Rank, card4Rank, card5Rank };
 		int suits = 0;
@@ -118,58 +142,102 @@ public class deck extends ArrayList<card>{
 		boolean fourOfAKind = false;
 		boolean straight = false;
 		boolean royalFlush = false;
+		int straightCount = 0;
+
 		
         for (int i = 0; i < cardSuits.length; i++) 
 		        for (int j = i+1; j < cardRanks.length; j++) 
 		  
 		            if (cardSuits[i] == cardSuits[j]) 
 		                suits++;
-        if (suits == 5) {
+        if (suits > 6) {
         	flush = true;
         }
+
            for (int i = 0; i < cardRanks.length; i++) 
 		        for (int j = i+1; j < cardRanks.length; j++) 
 		  
 		            if (cardRanks[i] == cardRanks[j]) 
 		                pairs++;
-      
-           
-           
-           
-         if (pairs == 1) {
+
+
+           int [] rankFrequency = new int [cardRanks.length];  
+           int visited = -1;  
+           for(int i = 0; i < cardRanks.length; i++){  
+               int count = 1;  
+               for(int j = i+1; j < cardRanks.length; j++){  
+                   if(cardRanks[i] == cardRanks[j]){  
+                       count++;  
+                       rankFrequency[j] = visited;  
+                   }  
+               }  
+               if(rankFrequency[i] != visited)  
+            	   rankFrequency[i] = count;  
+           } 
+         for (int i = 0; i < rankFrequency.length; i++) {
+        	 if (rankFrequency[i] == 3 ) {
+        		 threeOfKind = true;
+        	 }
+         }
+         for (int i = 0; i < rankFrequency.length; i++) {
+        	 if (rankFrequency[i] == 4 || rankFrequency[i] == 5 ) {
+        		 fourOfAKind = true;
+        	 }
+         }
+         Arrays.sort(cardRanks);
+         
+        
+         for (int i = 0; i < cardRanks.length-1; i++) {
+        	 int j = cardRanks[i];
+        	 int k = cardRanks[i+1];
+        	 if (k == j+1) {
+        		 straightCount++;
+        	 }
+         }
+         if (straightCount == 4) {
+        	 straight = true;
+         }
+         
+         if (cardRanks[0] == 1 && cardRanks[1] == 10 && cardRanks[2] == 11 && cardRanks[3] == 12 && cardRanks[4] == 13 && flush) {
+        	 royalFlush = true;
+        	 
+         }
+
+         if (pairs == 1) { //works
         	 betMultiplier = 0;
         	 System.out.println("pair");
          }
-         if (pairs == 2) {
+         if (pairs == 2) { //works
         	 betMultiplier = 1;
         	 System.out.println("2pair");
          }
-         if (threeOfKind) {
+         if (threeOfKind) { //works
         	 betMultiplier = 2;
         	 System.out.println("3kind");
          }
-         if (straight) {
+         if (straight) { //works
         	 betMultiplier = 3;
         	 System.out.println("straight");
          }
-         if (flush) {
+         if (flush) { //works
         	 betMultiplier = 5;
         	 System.out.println("flush");
          }
          
-         if (pairs == 1 && threeOfKind) {
+         if (pairs > 3 && threeOfKind) { //works
         	 betMultiplier = 10;
+        	 System.out.println(pairs);
         	 System.out.println("full");
          }
-         if (fourOfAKind) {
+         if (fourOfAKind) { //works
         	 betMultiplier = 25;
         	 System.out.println("4kind");
          }
-         if (straight && flush) {
+         if (straight && flush) { //works
         	 betMultiplier = 100;
         	 System.out.println("straightFlush");
          }
-         if (royalFlush) {
+         if (royalFlush) { //works
         	 betMultiplier = 250;
         	 System.out.println("royalFlush");
          }
