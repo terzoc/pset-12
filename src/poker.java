@@ -18,7 +18,8 @@ import javax.swing.ButtonGroup;
 public class poker extends JPanel {
 	private deck mainDeck = new deck();
 	private deck playerDeck = new deck();
-	private int betAmount = 2;
+	private deck swapDeck = new deck();
+	private int betAmount = 1;
 	private JLabel totalChipDisplay;
 	private JButton increaseBet;
 	private JButton decreaseBet;
@@ -37,6 +38,7 @@ public class poker extends JPanel {
 	private boolean swap3 = false;
 	private boolean swap4 = false;
 	private boolean swap5 = false;
+	private boolean swapped = false;
 	
 
 	/**
@@ -152,8 +154,10 @@ public class poker extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(swapBox1.isSelected()) {
 					swapsSelected++;
+					swap1 = true;
 				}else {
 					swapsSelected--;
+					swap1 = false;
 				}
 				
 				if(swapsSelected == 3) {
@@ -190,8 +194,10 @@ public class poker extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(swapBox2.isSelected()) {
 					swapsSelected++;
+					swap2 = true;
 				}else {
 					swapsSelected--;
+					swap2 = false;
 				}
 				
 				if(swapsSelected == 3) {
@@ -228,8 +234,10 @@ public class poker extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(swapBox3.isSelected()) {
 					swapsSelected++;
+					swap3 = true;
 				}else {
 					swapsSelected--;
+					swap3 = false;
 				}
 				
 				if(swapsSelected == 3) {
@@ -266,8 +274,10 @@ public class poker extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(swapBox4.isSelected()) {
 					swapsSelected++;
+					swap4 = true;
 				}else {
 					swapsSelected--;
+					swap4 = false;
 				}
 				
 				if(swapsSelected == 3) {
@@ -304,8 +314,10 @@ public class poker extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if(swapBox5.isSelected()) {
 					swapsSelected++;
+					swap5 = true;
 				}else {
 					swapsSelected--;
+					swap5 = false;
 				}
 				
 				if(swapsSelected == 3) {
@@ -340,11 +352,68 @@ public class poker extends JPanel {
 		JButton swapButton = new JButton("Swap");
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
+				if (swap1) {
+					playerDeck.replaceCard(0, swapDeck.drawForSwap(mainDeck));
+					swapped = true;
+				}
+				if (swap2) {
+					playerDeck.replaceCard(1, swapDeck.drawForSwap(mainDeck));
+					swapped = true;
+				}
+				if (swap3) {
+					playerDeck.replaceCard(2, swapDeck.drawForSwap(mainDeck));
+					swapped = true;
+				}
+				if (swap4) {
+					playerDeck.replaceCard(3, swapDeck.drawForSwap(mainDeck));
+					swapped = true;
+				}
+				if (swap5) {
+					playerDeck.replaceCard(4, swapDeck.drawForSwap(mainDeck));
+					swapped = true;
+				}
+				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.getCardName(0, playerDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard1 = scaleImage(playerCard1, 131 , 200);		
+				playerCardDisplay.setIcon(playerCard1);
 				
+				ImageIcon playerCard2 = new ImageIcon("cards/" + playerDeck.getCardName(1, playerDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard2 = scaleImage(playerCard2, 131 , 200);		
+				playerCardDisplay2.setIcon(playerCard2);
+				
+				ImageIcon playerCard3 = new ImageIcon("cards/" + playerDeck.getCardName(2, playerDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard3 = scaleImage(playerCard3, 131 , 200);		
+				playerCardDisplay3.setIcon(playerCard3);
+				
+				ImageIcon playerCard4 = new ImageIcon("cards/" + playerDeck.getCardName(3, playerDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard4 = scaleImage(playerCard4, 131 , 200);		
+				playerCardDisplay4.setIcon(playerCard4);
+				
+				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.getCardName(4, playerDeck) + ".png");
+//				ImageIcon playerCard1 = new ImageIcon("cards/" + playerDeck.drawAce() + ".png");
+				playerCard5 = scaleImage(playerCard5, 131 , 200);		
+				playerCardDisplay5.setIcon(playerCard5);
+				
+               swapButton.setEnabled(false);
+               playerDeck.checkWinConditions(playerDeck);
 			}
 		});
 		swapButton.setBounds(437, 398, 89, 23);
 		add(swapButton);
+		
+		JButton holdButton = new JButton("Swap");
+		holdButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				playerDeck.checkWinConditions(playerDeck);
+			}
+		});
+		holdButton.setBounds(437, 398, 89, 23);
+		add(holdButton);
+		
 		
 		JButton startButton = new JButton("Start");
 		startButton.addActionListener(new ActionListener() {

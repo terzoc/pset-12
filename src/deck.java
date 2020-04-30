@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 @SuppressWarnings("serial")
@@ -60,6 +61,12 @@ public class deck extends ArrayList<card>{
 		return origin.removeCard(0).getName();
 	}
 	
+	public card drawForSwap(deck origin) {
+		this.cards.add(origin.getCard(0));
+		
+		return origin.removeCard(0);
+	}
+	
 	public String drawAce() {
 		this.cards.add(new card("AC", "C"));
 		
@@ -75,8 +82,44 @@ public class deck extends ArrayList<card>{
 		return this.cards.get(i);
 	}
 	
+	public String getCardName(int i, deck playerDeck) {
+		return playerDeck.getCard(i).getName();
+	}
+	
+	
+	
 	public card removeCard(int i){
 		return this.cards.remove(i);
+	}
+	
+	public card replaceCard(int i, card newcard){
+		return this.cards.set(i, newcard);
+	}
+	
+	public int checkWinConditions(deck playerDeck) {
+		int betMultiplier = 0;
+		int card1Rank = playerDeck.getCard(0).getRank();
+		String card1Suit = playerDeck.getCard(0).getSuit();
+		int card2Rank = playerDeck.getCard(1).getRank();
+		String card2Suit = playerDeck.getCard(1).getSuit();
+		int card3Rank = playerDeck.getCard(2).getRank();
+		String card3Suit = playerDeck.getCard(2).getSuit();
+		int card4Rank = playerDeck.getCard(3).getRank();
+		String card4Suit = playerDeck.getCard(3).getSuit();
+		int card5Rank = playerDeck.getCard(4).getRank();
+		String card5Suit = playerDeck.getCard(4).getSuit();
+		System.out.println(card4Suit);
+		String[] cardSuits = { card1Suit, card2Suit, card3Suit, card4Suit, card5Suit };
+		int[] cardRanks = { card1Rank, card2Rank, card3Rank, card4Rank, card5Rank };
+		int pairs = 0;
+           for (int i = 0; i < cardRanks.length; i++) 
+		        for (int j = i+1; j < cardRanks.length; j++) 
+		  
+		            if (cardRanks[i] == cardRanks[j]) 
+		                pairs++;
+         
+
+		return betMultiplier; 
 	}
 	
 	public int calculateValue() {
