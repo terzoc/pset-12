@@ -473,7 +473,7 @@ public class poker extends JPanel {
                
 			}
 		});
-		swapButton.setBounds(437, 398, 89, 23);
+		swapButton.setBounds(333, 395, 89, 23);
 		add(swapButton);
 		
 		holdButton = new JButton("Hold");
@@ -537,7 +537,7 @@ public class poker extends JPanel {
 				}
 			}
 		});
-		holdButton.setBounds(479, 440, 89, 23);
+		holdButton.setBounds(532, 395, 89, 23);
 		add(holdButton);
 		
 		
@@ -588,52 +588,54 @@ public class poker extends JPanel {
 		add(startButton);
 		
 	}
+	
 	public void resetGame() {
-	startButton.setEnabled(true);
-	decreaseBet.setEnabled(true);
-	increaseBet.setEnabled(true);
-	mainDeck.clearDeck();
-	swapDeck.clearDeck();
-	playerDeck.clearDeck();
-	swapButton.setEnabled(true);
-	holdButton.setEnabled(true);
-	
-	playerCardDisplay.setIcon(backOfCard);
-	playerCardDisplay2.setIcon(backOfCard);
-	playerCardDisplay3.setIcon(backOfCard);
-	playerCardDisplay4.setIcon(backOfCard);
-	playerCardDisplay5.setIcon(backOfCard);
-	
-	swapBox1.setEnabled(true);
-	swapBox2.setEnabled(true);
-	swapBox3.setEnabled(true);
-	swapBox4.setEnabled(true);
-	swapBox5.setEnabled(true);
-	swapBox1.setSelected(false);
-	swapBox2.setSelected(false);
-	swapBox3.setSelected(false);
-	swapBox4.setSelected(false);
-	swapBox5.setSelected(false);
-	
-	swapsSelected = 0;
-	
-	winMultiplier = -1;
-	winnings = 0;
-	betAmount = 1;
-	betDisplay.setText("Bet Amount : " + betAmount);
-	
-	swap1 = false;
-	swap2 = false;
-	swap3 = false;
-	swap4 = false;
-	swap5 = false;
-	swapped = false;
-	
-	refreshChips();
-	
-	
-
+		isGameStarted = false;
+		startButton.setEnabled(true);
+		decreaseBet.setEnabled(true);
+		increaseBet.setEnabled(true);
+		mainDeck.clearDeck();
+		swapDeck.clearDeck();
+		playerDeck.clearDeck();
+		swapButton.setEnabled(true);
+		holdButton.setEnabled(true);
+		
+		backOfCard = new ImageIcon("cards/anotherback.png");
+		backOfCard = scaleImage(backOfCard, 131 , 200);	
+		playerCardDisplay.setIcon(backOfCard);
+		playerCardDisplay2.setIcon(backOfCard);
+		playerCardDisplay3.setIcon(backOfCard);
+		playerCardDisplay4.setIcon(backOfCard);
+		playerCardDisplay5.setIcon(backOfCard);
+		
+		swapBox1.setEnabled(true);
+		swapBox2.setEnabled(true);
+		swapBox3.setEnabled(true);
+		swapBox4.setEnabled(true);
+		swapBox5.setEnabled(true);
+		swapBox1.setSelected(false);
+		swapBox2.setSelected(false);
+		swapBox3.setSelected(false);
+		swapBox4.setSelected(false);
+		swapBox5.setSelected(false);
+		
+		swapsSelected = 0;
+		
+		winMultiplier = -1;
+		winnings = 0;
+		betAmount = 1;
+		betDisplay.setText("Bet Amount : " + betAmount);
+		
+		swap1 = false;
+		swap2 = false;
+		swap3 = false;
+		swap4 = false;
+		swap5 = false;
+		swapped = false;
+		
+		refreshChips();
 	}
+	
 	public void refreshChips() {
 		System.out.println("refreshed");
 		totalChipDisplay.setText("Total Chips : " + Player.getChips());
@@ -658,5 +660,9 @@ public class poker extends JPanel {
 
         return new ImageIcon(icon.getImage().getScaledInstance(nw, nh, Image.SCALE_DEFAULT));
     }
+	
+	public boolean getIsGameStarted() {
+		return isGameStarted;
+	}
 	
 }

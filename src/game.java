@@ -57,18 +57,26 @@ public class game {
 		panel.setLayout(new CardLayout(0, 0));
 		CardLayout cardLayout = (CardLayout) panel.getLayout();
 		
-		JPanel poker = new poker();
-		panel.add(poker, "pokerPanel");
+		JPanel pokerPanel = new poker();
+		panel.add(pokerPanel, "pokerPanel");
 		
 //		main menu for poker
 		JButton btnNewButton_2 = new JButton("Main Menu");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cardLayout.show(panel, "mainMenu");
+				if(((poker) pokerPanel).getIsGameStarted()) {
+					int dialogResult = JOptionPane.showConfirmDialog (null, "You have started a game and are leaving to the main menu. \n\n This will reset your progress. \n\n Are You sure you want to leave?","Warning",JOptionPane.YES_NO_OPTION);
+			    	  if(dialogResult == JOptionPane.YES_OPTION){
+			    		  cardLayout.show(panel, "mainMenu");
+			    	  }
+
+				}else {
+					cardLayout.show(panel, "mainMenu");
+				}
 			}
 		});
 		btnNewButton_2.setBounds(829, 650, 115, 30);
-		poker.add(btnNewButton_2);
+		pokerPanel.add(btnNewButton_2);
 		
 		blackJack BJPanel = new blackJack();
 		panel.add(BJPanel, "BJPanel");
@@ -116,6 +124,7 @@ public class game {
 		JButton btnNewButton_1 = new JButton("Poker");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				((poker) pokerPanel).resetGame();
 				cardLayout.show(panel, "pokerPanel");
 			}
 		});
