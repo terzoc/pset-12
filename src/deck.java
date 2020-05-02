@@ -121,6 +121,23 @@ public class deck extends ArrayList<card>{
 		return this.cards.set(i, newcard);
 	}
 	
+	public boolean hasAce(deck playerDeck) {
+		boolean ace = false;
+		int card1Rank = playerDeck.getCard(0).getRank();
+		int card2Rank = playerDeck.getCard(1).getRank();
+		int card3Rank = playerDeck.getCard(2).getRank();
+		int card4Rank = playerDeck.getCard(3).getRank();
+		int card5Rank = playerDeck.getCard(4).getRank();
+		int[] ranks = { card1Rank, card2Rank, card3Rank, card4Rank, card5Rank };
+		
+		for (int rank : ranks) {
+		    if (rank == 1) {
+		        ace = true;
+		    }
+		}
+		return ace;
+	}
+	
 	public int checkWinConditions(deck playerDeck) {
 		int betMultiplier = -1;
 		boolean flush = false;
@@ -265,6 +282,7 @@ public class deck extends ArrayList<card>{
 	public void clearDeck(){
 		this.cards.clear();
 	}
+	
 	
 	public int getDeckSize() {
 		return this.cards.size();

@@ -50,6 +50,7 @@ public class poker extends JPanel {
 	private boolean swapped = false;
 	private int winMultiplier = -1;
 	private int winnings = 0;
+	private int maxSwap = 3;
 
 
 	/**
@@ -174,7 +175,7 @@ public class poker extends JPanel {
 					swap1 = false;
 				}
 
-				if(swapsSelected == 3) {
+				if(swapsSelected == maxSwap) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
 					}
@@ -214,7 +215,7 @@ public class poker extends JPanel {
 					swap2 = false;
 				}
 
-				if(swapsSelected == 3) {
+				if(swapsSelected == maxSwap) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
 					}
@@ -254,7 +255,7 @@ public class poker extends JPanel {
 					swap3 = false;
 				}
 
-				if(swapsSelected == 3) {
+				if(swapsSelected == maxSwap) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
 					}
@@ -294,7 +295,7 @@ public class poker extends JPanel {
 					swap4 = false;
 				}
 
-				if(swapsSelected == 3) {
+				if(swapsSelected == maxSwap) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
 					}
@@ -334,7 +335,7 @@ public class poker extends JPanel {
 					swap5 = false;
 				}
 
-				if(swapsSelected == 3) {
+				if(swapsSelected == maxSwap) {
 					if(!swapBox1.isSelected()) {
 						swapBox1.setEnabled(false);
 					}
@@ -581,6 +582,10 @@ public class poker extends JPanel {
 //				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.drawK() + ".png");
 				playerCard5 = scaleImage(playerCard5, 131 , 200);
 				playerCardDisplay5.setIcon(playerCard5);
+				
+				if (playerDeck.hasAce(playerDeck)){
+					maxSwap = 4;
+				}
 			}
 		});
 		startButton.setBounds(731, 92, 89, 23);
@@ -619,6 +624,7 @@ public class poker extends JPanel {
 		swapBox5.setSelected(false);
 
 		swapsSelected = 0;
+		maxSwap = 3;
 
 		winMultiplier = -1;
 		winnings = 0;
