@@ -24,12 +24,15 @@ public class poker extends JPanel {
 	private JLabel totalChipDisplay;
 	private JButton increaseBet;
 	private JButton decreaseBet;
+	private JButton increaseBet2;
+	private JButton decreaseBet2;
 	private JLabel playerCardDisplay;
 	private JLabel playerCardDisplay2;
 	private JLabel playerCardDisplay3;
 	private JLabel playerCardDisplay4;
 	private JLabel playerCardDisplay5;
 	private JLabel betDisplay;
+	private JLabel betDisplay2;
 	private int totalPlayerChips;
 	private int swapsSelected;
 	private JCheckBox swapBox1;
@@ -38,6 +41,7 @@ public class poker extends JPanel {
 	private JCheckBox swapBox4;
 	private JCheckBox swapBox5;
 	private JButton startButton;
+	private JButton placeSecondBet;
 	private JButton swapButton;
 	private JButton holdButton;
 	private ImageIcon backOfCard;
@@ -51,6 +55,7 @@ public class poker extends JPanel {
 	private int winMultiplier = -1;
 	private int winnings = 0;
 	private int maxSwap = 3;
+	private int secondBet = 0; 
 
 
 	/**
@@ -96,6 +101,36 @@ public class poker extends JPanel {
 		});
 		decreaseBet.setBounds(855, 56, 46, 23);
 		add(decreaseBet);
+		
+		betDisplay2 = new JLabel("Second Bet Amount : 0");
+		betDisplay2.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		betDisplay2.setBounds(670, 500, 235, 25);
+		add(betDisplay2);
+
+		increaseBet2 = new JButton("+");
+		increaseBet2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(secondBet < 10) {
+					secondBet += 1;
+					betDisplay2.setText("Second Bet Amount : " + secondBet);
+				}
+			}
+		});
+		increaseBet2.setBounds(620, 500, 46, 23);
+		add(increaseBet2);
+
+		decreaseBet2 = new JButton("-");
+		decreaseBet2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(secondBet > 1) {
+					secondBet -= 1;
+					betDisplay2.setText("Second Bet Amount : " + secondBet);
+				}
+			}
+		});
+		decreaseBet2.setBounds(870, 500, 46, 23);
+		add(decreaseBet2);
+
 
 		backOfCard = new ImageIcon("cards/anotherback.png");
 		backOfCard = scaleImage(backOfCard, 131 , 200);
@@ -367,6 +402,7 @@ public class poker extends JPanel {
 		swapButton = new JButton("Swap");
 		swapButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				betAmount = betAmount + secondBet;
 
 				if (swap1) {
 					playerDeck.replaceCard(0, swapDeck.drawForSwap(mainDeck));
@@ -479,6 +515,7 @@ public class poker extends JPanel {
 		holdButton = new JButton("Hold");
 		holdButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				betAmount = betAmount + secondBet;
 				winMultiplier = playerDeck.checkWinConditions(playerDeck);
 				if (winMultiplier != -1) {
 				winnings = winMultiplier * betAmount;
@@ -539,6 +576,20 @@ public class poker extends JPanel {
 		});
 		holdButton.setBounds(532, 395, 89, 23);
 		add(holdButton);
+		
+		placeSecondBet = new JButton("Place Bet");
+		placeSecondBet.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				totalChipDisplay.setText("Total Chips : " + Player.setChips(totalPlayerChips - secondBet));
+				totalPlayerChips -= secondBet;
+				decreaseBet2.setEnabled(false);
+				increaseBet2.setEnabled(false);
+				placeSecondBet.setEnabled(false);
+				
+			}
+		});
+			placeSecondBet.setBounds(731, 550, 89, 23);
+			add(placeSecondBet);
 
 
 		startButton = new JButton("Start");
@@ -553,6 +604,9 @@ public class poker extends JPanel {
 				increaseBet.setEnabled(false);
 				swapButton.setEnabled(true);
 				holdButton.setEnabled(true);
+				decreaseBet2.setEnabled(true);
+				increaseBet2.setEnabled(true);
+				placeSecondBet.setEnabled(true);
 
 				mainDeck.populateDeck();
 				mainDeck.shuffle();
@@ -579,13 +633,15 @@ public class poker extends JPanel {
 				playerCardDisplay4.setIcon(playerCard4);
 
 				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw(mainDeck) + ".png");
-//				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.drawK() + ".png");
+//				ImageIcon playerCard5 = new ImageIcon("cards/" + playerDeck.draw10() + ".png");
 				playerCard5 = scaleImage(playerCard5, 131 , 200);
 				playerCardDisplay5.setIcon(playerCard5);
 				
 				if (playerDeck.hasAce(playerDeck)){
 					maxSwap = 4;
+			
 				}
+
 			}
 		});
 		startButton.setBounds(731, 92, 89, 23);
@@ -598,6 +654,9 @@ public class poker extends JPanel {
 		startButton.setEnabled(true);
 		decreaseBet.setEnabled(true);
 		increaseBet.setEnabled(true);
+		decreaseBet2.setEnabled(false);
+		increaseBet2.setEnabled(false);
+		placeSecondBet.setEnabled(false);
 		mainDeck.clearDeck();
 		swapDeck.clearDeck();
 		playerDeck.clearDeck();
@@ -625,11 +684,13 @@ public class poker extends JPanel {
 
 		swapsSelected = 0;
 		maxSwap = 3;
+		secondBet = 0;
 
 		winMultiplier = -1;
 		winnings = 0;
 		betAmount = 1;
 		betDisplay.setText("Bet Amount : " + betAmount);
+		betDisplay2.setText("Second Bet Amount : " + secondBet);
 
 		swap1 = false;
 		swap2 = false;
